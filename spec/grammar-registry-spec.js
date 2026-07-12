@@ -19,6 +19,20 @@ describe("GrammarRegistry", () => {
 
   beforeEach(async () => await onig.ready)
 
+  it('supports deprecated emitter subscriptions without emissary', () => {
+    registry = new GrammarRegistry()
+    const added = []
+    const subscription = registry.on('grammar-added', grammar => added.push(grammar))
+    const grammar = {scopeName: 'source.test'}
+
+    registry.emit('grammar-added', grammar)
+    expect(added).to.deep.equal([grammar])
+
+    subscription.dispose()
+    registry.emit('grammar-added', grammar)
+    expect(added).to.deep.equal([grammar])
+  })
+
   function loadGrammarSync (name) {
     return registry.loadGrammarSync(path.join(__dirname, 'fixtures', name))
   }
