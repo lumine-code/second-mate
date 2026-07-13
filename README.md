@@ -1,12 +1,12 @@
-# Second Mate
-[![CI](https://github.com/pulsar-edit/second-mate/actions/workflows/ci.yml/badge.svg)](https://github.com/pulsar-edit/second-mate/actions/workflows/ci.yml)
+# @lumine-code/second-mate
+[![CI](https://github.com/lumine-code/second-mate/actions/workflows/ci.yml/badge.svg)](https://github.com/lumine-code/second-mate/actions/workflows/ci.yml)
 
 TextMate helpers
 
 ## Installing
 
 ```sh
-npm install second-mate
+npm install @lumine-code/second-mate
 ```
 
 ## Using
@@ -14,7 +14,7 @@ npm install second-mate
 ### ScopeSelector
 
 ```javascript
-const {ScopeSelector, ready} = require('second-mate')
+const {ScopeSelector, ready} = require('@lumine-code/second-mate')
 await ready;
 const selector = new ScopeSelector('a | b')
 selector.matches(['c']) // => false

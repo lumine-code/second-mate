@@ -1,6 +1,6 @@
 {
-  "name": "second-mate",
-  "version": "8.0.0",
+  "name": "@lumine-code/second-mate",
+  "version": "9.0.0",
   "description": "TextMate helpers",
   "main": "./lib/second-mate.js",
   "scripts": {
@@ -11,13 +11,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pulsar-edit/second-mate"
+    "url": "https://github.com/lumine-code/second-mate"
   },
   "bugs": {
-    "url": "https://github.com/pulsar-edit/second-mate/issues"
+    "url": "https://github.com/lumine-code/second-mate/issues"
   },
   "license": "MIT",
-  "homepage": "http://github.com/pulsar-edit/second-mate",
+  "homepage": "https://github.com/lumine-code/second-mate",
   "dependencies": {
     "event-kit": "^2.5.3",
     "fs-plus": "^3.0.0",
