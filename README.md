@@ -1,15 +1,20 @@
 # @lumine-code/second-mate
-[![CI](https://github.com/lumine-code/second-mate/actions/workflows/ci.yml/badge.svg)](https://github.com/lumine-code/second-mate/actions/workflows/ci.yml)
 
-TextMate helpers
+Provides TextMate grammar, tokenization, and scope-selection helpers.
 
-## Installing
+## Features
+
+- **Grammar registry**: loads, updates, and selects TextMate grammars and injections.
+- **Oniguruma tokenization**: tokenizes lines with WebAssembly-backed regular expressions.
+- **Scope selectors**: parses, matches, and converts TextMate scope selectors.
+
+## Installation
 
 ```sh
 npm install @lumine-code/second-mate
 ```
 
-## Using
+## Usage
 
 ### ScopeSelector
 
@@ -24,7 +29,7 @@ selector.matches(['a']) // => true
 ### GrammarRegistry
 
 ```js
-const {GrammarRegistry, ready} = require('first-mate');
+const {GrammarRegistry, ready} = require('@lumine-code/second-mate');
 await ready;
 const registry = new GrammarRegistry();
 const grammar = registry.loadGrammarSync('./spec/fixtures/javascript.json');
@@ -122,3 +127,7 @@ lines and a `tags` key, pointing to an array of tags arrays described above.
   * Run `npm install`
   * Run `npm test` to run the specs
   * If you make changes to `./src/scope-selector-parser.pegjs` ensure to run `npm run parse` to generate the JS form of PegJS.
+
+## Contributing
+
+Got ideas to make this package better, found a bug, or want to help add new features? Just drop your thoughts on GitHub. Any feedback is welcome!

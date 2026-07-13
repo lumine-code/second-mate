@@ -1,7 +1,8 @@
 {
   "name": "@lumine-code/second-mate",
+  "author": "lumine-code",
   "version": "9.0.0",
-  "description": "TextMate helpers",
+  "description": "Provides TextMate grammar, tokenization, and scope-selection helpers.",
   "main": "./lib/second-mate.js",
   "scripts": {
     "test": "mocha spec",
@@ -9,14 +10,12 @@
     "parse": "pegjs -o ./lib/scope-selector-parser.js ./src/scope-selector-parser.pegjs",
     "docs": "grunt atomdoc"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/lumine-code/second-mate"
-  },
-  "bugs": {
-    "url": "https://github.com/lumine-code/second-mate/issues"
-  },
+  "repository": "https://github.com/lumine-code/second-mate",
+  "bugs": "https://github.com/lumine-code/second-mate/issues",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/lumine-code/second-mate",
   "dependencies": {
     "event-kit": "^2.5.3",
