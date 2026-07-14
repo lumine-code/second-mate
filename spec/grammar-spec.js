@@ -2,8 +2,8 @@ const chai = require('chai')
 const { expect } = chai
 
 const path = require('path');
-const _ = require('underscore-plus');
-const fs = require('fs-plus');
+const _ = require('@lumine-code/underscore-plus');
+const fs = require('@lumine-code/fs-plus');
 const GrammarRegistry = require('../lib/grammar-registry');
 const Grammar = require('../lib/grammar');
 const { oniguruma } = require('../lib/onig');
