@@ -5,8 +5,8 @@
   "description": "Provides TextMate grammar, tokenization, and scope-selection helpers.",
   "main": "./lib/second-mate.js",
   "scripts": {
-    "test": "mocha spec",
-    "benchmark": "node_modules/.bin/coffee benchmark/benchmark.coffee",
+    "test": "jasmine",
+    "benchmark": "node benchmark/benchmark.js",
     "parse": "pegjs -o ./lib/scope-selector-parser.js ./src/scope-selector-parser.pegjs"
   },
   "repository": "https://github.com/lumine-code/second-mate",
@@ -31,7 +31,7 @@
     "chai": "^4.5.0",
     "chai-spies": "^1.1.0",
     "chai-wait-for": "^3.2.2",
-    "mocha": "^11.7.6",
+    "jasmine": "^6.3.0",
     "pegjs": "^0.10.0"
   },
   "overrides": {
