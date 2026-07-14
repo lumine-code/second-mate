@@ -1,5 +1,5 @@
 path = require 'path'
-fs = require 'fs-plus'
+fs = require '@lumine-code/fs-plus'
 GrammarRegistry = require '../src/grammar-registry'
 
 registry = new GrammarRegistry()
