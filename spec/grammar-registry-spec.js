@@ -1,10 +1,10 @@
 const path = require('path')
 const GrammarRegistry = require('../lib/grammar-registry')
 const onig = require('../lib/onig')
-const chai = require('chai')
+const chai = require('./helpers/chai')
 const { expect } = chai
 
-const chaiWaitFor = require('chai-wait-for')
+const chaiWaitFor = require('./helpers/chai-wait-for')
 chai.use(chaiWaitFor)
 const waitFor = chaiWaitFor.bindWaitFor({
   timeout: 1000,

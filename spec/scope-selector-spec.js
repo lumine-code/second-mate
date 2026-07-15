@@ -1,5 +1,5 @@
 const ScopeSelector = require('../lib/scope-selector');
-const chai = require('chai')
+const chai = require('./helpers/chai')
 const { expect } = chai
 
 describe("ScopeSelector", function() {

@@ -1,5 +1,5 @@
 const onig = require('../lib/onig')
-const chai = require('chai')
+const chai = require('./helpers/chai')
 const { expect } = chai
 
 describe("OnigScanner", () => {

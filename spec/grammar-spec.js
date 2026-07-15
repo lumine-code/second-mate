@@ -1,4 +1,4 @@
-const chai = require('chai')
+const chai = require('./helpers/chai')
 const { expect } = chai
 
 const path = require('path');
