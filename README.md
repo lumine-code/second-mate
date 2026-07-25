@@ -1,4 +1,4 @@
-# @lumine-code/second-mate
+# second-mate
 
 Provides TextMate grammar, tokenization, and scope-selection helpers.
 
