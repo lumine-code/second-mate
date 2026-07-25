@@ -3,6 +3,15 @@
   "author": "lumine-code",
   "version": "9.0.0",
   "description": "Provides TextMate grammar, tokenization, and scope-selection helpers.",
+  "keywords": [
+    "textmate",
+    "grammar",
+    "tokenizer",
+    "syntax-highlighting",
+    "scope",
+    "oniguruma",
+    "lumine"
+  ],
   "main": "./lib/second-mate.js",
   "scripts": {
     "test": "jasmine",
