@@ -26,8 +26,8 @@ describe("Grammar tokenization", () => {
     loadGrammarSync('html-erb.json');
     loadGrammarSync('html.json');
     loadGrammarSync('php.json');
-    loadGrammarSync('python.cson');
-    loadGrammarSync('python-regex.cson');
+    loadGrammarSync('python.json');
+    loadGrammarSync('python-regex.json');
   });
 
   afterEach(() => {
@@ -52,7 +52,7 @@ describe("Grammar tokenization", () => {
 
   describe("Registry::loadGrammarSync", () => {
     it("returns a grammar for the file path specified", () => {
-      grammar = loadGrammarSync('hello.cson');
+      grammar = loadGrammarSync('hello.json');
       expect(fs.isFileSync(grammar.path)).to.eql(true);
       expect(grammar).to.be.ok;
 
@@ -329,7 +329,7 @@ describe("Grammar tokenization", () => {
 
       describe("when applyEndPatternLast flag is set in a pattern", () => {
         it("applies end pattern after the other patterns", () => {
-          grammar = loadGrammarSync('apply-end-pattern-last.cson');
+          grammar = loadGrammarSync('apply-end-pattern-last.json');
           const lines = grammar.tokenizeLines(`\
 last
 { some }excentricSyntax }
@@ -435,7 +435,7 @@ first
           });
 
           it("supports including repository rules from the other grammar", () => {
-            loadGrammarSync('include-external-repository-rule.cson');
+            loadGrammarSync('include-external-repository-rule.json');
             grammar = registry.grammarForScopeName('test.include-external-repository-rule');
             const {line, tags} = grammar.tokenizeLine('enumerate');
             const tokens = registry.decodeTokens(line, tags);
@@ -484,7 +484,7 @@ first
     });
 
     it("can parse a grammar with newline characters in its regular expressions (regression)", () => {
-      grammar = loadGrammarSync('imaginary.cson');
+      grammar = loadGrammarSync('imaginary.json');
       const {line, tags, ruleStack} = grammar.tokenizeLine("// a singleLineComment");
       const tokens = registry.decodeTokens(line, tags);
       expect(ruleStack.length).to.eql(1);
@@ -497,7 +497,7 @@ first
     });
 
     it("can parse multiline text using a grammar containing patterns with newlines", () => {
-      grammar = loadGrammarSync('multiline.cson');
+      grammar = loadGrammarSync('multiline.json');
       const lines = grammar.tokenizeLines('Xy\\\nzX');
 
       // Line 0
@@ -534,7 +534,7 @@ first
     });
 
     it("can parse a grammar that captures the same text multiple times (regression)", () => {
-      grammar = loadGrammarSync('captures-patterns.cson');
+      grammar = loadGrammarSync('captures-patterns.json');
       let lines = grammar.tokenizeLines('abc');
       expect(lines.length).to.eql(1);
       expect(lines[0].length).to.eql(3);
@@ -574,7 +574,7 @@ first
     describe("when the grammar can infinitely loop over a line", () => {
       it("aborts tokenization", () => {
         error = chai.spy.on(console, 'error', () => {});
-        grammar = loadGrammarSync('infinite-loop.cson');
+        grammar = loadGrammarSync('infinite-loop.json');
         const {line, tags} = grammar.tokenizeLine("abc");
         const scopes = [];
         const tokens = registry.decodeTokens(line, tags, scopes);
@@ -593,7 +593,7 @@ first
           calledPatterns = patterns;
           return new OnigScanner(patterns);
         });
-        grammar = loadGrammarSync('begin-pattern-without-end.cson');
+        grammar = loadGrammarSync('begin-pattern-without-end.json');
         grammar.tokenizeLine("abc");
         expect(spied).to.have.been.called;
         expect(calledPatterns).to.have.lengthOf(3);
@@ -649,7 +649,7 @@ first
       });
 
       it("ignores child captures of a capture with patterns", () => {
-        grammar = loadGrammarSync('nested-captures.cson');
+        grammar = loadGrammarSync('nested-captures.json');
         const {line, tags} = grammar.tokenizeLine("ab");
         const tokens = registry.decodeTokens(line, tags);
 
@@ -687,7 +687,7 @@ first
       });
 
       it("updates injections when grammars that the injection patterns use are updated", () => {
-        loadGrammarSync('sql-injection.cson');
+        loadGrammarSync('sql-injection.json');
         grammar = registry.grammarForScopeName('source.sql-injection');
         let calls = 0
         const callback = (a) => { calls++ }
@@ -766,7 +766,7 @@ first
       });
 
       it("gives lower priority to them than other matches", () => {
-        loadGrammarSync('normal-injection-selector.cson');
+        loadGrammarSync('normal-injection-selector.json');
         grammar = registry.grammarForScopeName("source.js");
         const {line, tags} = grammar.tokenizeLine("<!--");
         const tokens = registry.decodeTokens(line, tags);
@@ -779,7 +779,7 @@ first
 
     describe("when the grammar has a prefixed injection selector", () => {
       it("correctly prioritizes them when tokenizing", () => {
-        loadGrammarSync('prefixed-injection-selector.cson');
+        loadGrammarSync('prefixed-injection-selector.json');
         grammar = registry.grammarForScopeName("source.js");
         const {line, tags} = grammar.tokenizeLine("<!--");
         const tokens = registry.decodeTokens(line, tags);
@@ -801,7 +801,7 @@ first
 
     describe("when the position doesn't advance and rule includes $self and matches itself", () => {
       it("tokenizes the entire line using the rule", () => {
-        grammar = loadGrammarSync('forever.cson');
+        grammar = loadGrammarSync('forever.json');
         const {line, tags} = grammar.tokenizeLine("forever and ever");
         const tokens = registry.decodeTokens(line, tags);
         expect(tokens.length).to.eql(1);
@@ -852,7 +852,7 @@ first
       });
 
       it("replaces all occurences of capture index placeholders", () => {
-        loadGrammarSync("scope-names-with-placeholders.cson");
+        loadGrammarSync("scope-names-with-placeholders.json");
         grammar = registry.grammarForScopeName("scope-names-with-placeholders");
         let {line, tags} = grammar.tokenizeLine("a b");
         let tokens = registry.decodeTokens(line, tags);
@@ -1121,7 +1121,7 @@ public void test() {
     describe("HTML", () => {
       describe("when it contains CSS", () => {
         it("correctly parses the CSS rules", () => {
-          loadGrammarSync("css.cson");
+          loadGrammarSync("css.json");
           grammar = registry.grammarForScopeName("text.html.basic");
 
           lines = grammar.tokenizeLines(`\
@@ -1151,8 +1151,8 @@ public void test() {
 
       describe("when it contains inline CSS", () => {
         it("correctly stops parsing CSS", () => {
-          loadGrammarSync('css.cson');
-          loadGrammarSync('html-css-inline.cson');
+          loadGrammarSync('css.json');
+          loadGrammarSync('html-css-inline.json');
           grammar = registry.grammarForScopeName('text.html.basic.css');
 
           const {tokens} = grammar.tokenizeLine("<span style='s:'></style>");
@@ -1181,7 +1181,7 @@ public void test() {
 
     describe("Latex", () => {
       it("properly emits close tags for scope names containing back-references", () => {
-        loadGrammarSync("latex.cson");
+        loadGrammarSync("latex.json");
         grammar = registry.grammarForScopeName("text.tex.latex");
         const {line, tags} = grammar.tokenizeLine("\\chapter*{test}");
         registry.decodeTokens(line, tags);
@@ -1190,7 +1190,7 @@ public void test() {
 
     describe("Thrift", () => {
       it("doesn't loop infinitely when the same rule is pushed or popped based on a zero-width match", () => {
-        loadGrammarSync("thrift.cson");
+        loadGrammarSync("thrift.json");
         grammar = registry.grammarForScopeName("source.thrift");
 
         lines = grammar.tokenizeLines(`\
@@ -1224,7 +1224,7 @@ public void test() {
 
   describe("when the injection references an included grammar", () => {
     it("adds a pattern for that grammar", () => {
-      loadGrammarSync("injection-with-include.cson");
+      loadGrammarSync("injection-with-include.json");
       grammar = registry.grammarForScopeName("test.injections");
       expect(grammar).not.to.eql(null);
       expect(grammar.includedGrammarScopes).to.eql(['text.plain']);

@@ -1,0 +1,38 @@
+{
+  "name": "interminable-grammar",
+  "scopeName": "source.no-end",
+  "patterns": [
+    {
+      "name": "start",
+      "begin": "^",
+      "patterns": [
+        {
+          "name": "invalid.foo",
+          "match": "aaa"
+        },
+        {
+          "include": "#others"
+        }
+      ]
+    }
+  ],
+  "repository": {
+    "others": {
+      "patterns": [
+        {
+          "name": "start",
+          "begin": "^",
+          "patterns": [
+            {
+              "name": "invalid.foo",
+              "match": "aaa"
+            },
+            {
+              "include": "#others"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

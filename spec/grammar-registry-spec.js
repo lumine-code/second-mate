@@ -88,7 +88,7 @@ describe("GrammarRegistry", () => {
 
     it("does not apply if the grammar's limitLineLength option is set to false", () => {
       registry = new GrammarRegistry({maxLineLength: 10});
-      loadGrammarSync('no-line-length-limit.cson');
+      loadGrammarSync('no-line-length-limit.json');
       const grammar = registry.grammarForScopeName('source.long-lines');
 
       const {tokens} = grammar.tokenizeLine("hello goodbye hello goodbye hello");
