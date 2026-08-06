@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/lumine-code/second-mate",
   "engines": {
-    "node": ">=20"
+    "node": ">=24"
   },
   "dependencies": {
     "event-kit": "^2.5.3",
