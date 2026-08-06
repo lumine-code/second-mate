@@ -16,7 +16,7 @@
   "scripts": {
     "test": "jasmine",
     "benchmark": "node benchmark/benchmark.js",
-    "parse": "pegjs -o ./lib/scope-selector-parser.js ./src/scope-selector-parser.pegjs"
+    "parse": "peggy -o ./lib/scope-selector-parser.js ./src/scope-selector-parser.pegjs"
   },
   "repository": "https://github.com/lumine-code/second-mate",
   "bugs": "https://github.com/lumine-code/second-mate/issues",
@@ -29,15 +29,14 @@
     "node": ">=24"
   },
   "dependencies": {
-    "event-kit": "^2.5.3",
+    "@lumine-code/event-kit": "github:lumine-code/event-kit#fcd72380dff55925c2224251bc3dc81f35665437",
     "@lumine-code/fs-plus": "github:lumine-code/fs-plus#dbede762a7a1019a024d8f8c8de5e4f04ef2bd78",
-    "grim": "^2.0.3",
     "@lumine-code/season": "github:lumine-code/season#3516a8a6e96e7128fd65050909cba351a3ed6361",
     "@lumine-code/underscore-plus": "github:lumine-code/underscore-plus#3187fd4c2dd47f50044efe51deb7c662ddac437c",
     "vscode-oniguruma": "^2.0.1"
   },
   "devDependencies": {
     "jasmine": "^6.3.0",
-    "pegjs": "^0.10.0"
+    "peggy": "^5.1.0"
   }
 }

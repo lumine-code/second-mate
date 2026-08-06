@@ -19,17 +19,17 @@ describe("GrammarRegistry", () => {
 
   beforeEach(async () => await onig.ready)
 
-  it('supports deprecated emitter subscriptions without emissary', () => {
+  it('notifies subscribers when a grammar is added, until they unsubscribe', () => {
     registry = new GrammarRegistry()
     const added = []
-    const subscription = registry.on('grammar-added', grammar => added.push(grammar))
-    const grammar = {scopeName: 'source.test'}
+    const subscription = registry.onDidAddGrammar(grammar => added.push(grammar))
 
-    registry.emit('grammar-added', grammar)
+    const grammar = registry.createGrammar('grammar.json', {scopeName: 'source.test'})
+    registry.addGrammar(grammar)
     expect(added).to.deep.equal([grammar])
 
     subscription.dispose()
-    registry.emit('grammar-added', grammar)
+    registry.addGrammar(registry.createGrammar('other.json', {scopeName: 'source.other'}))
     expect(added).to.deep.equal([grammar])
   })
 
