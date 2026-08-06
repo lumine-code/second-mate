@@ -1,0 +1,8 @@
+node_modules
+package-lock.json
+build
+spec/fixtures
+test/fixtures
+lib/scope-selector-parser.js
+benchmark/large.js
+benchmark/large.min.js

@@ -1,7 +1,7 @@
-const chaiWaitFor = require('./helpers/chai-wait-for')
+const chaiWaitFor = require("./helpers/chai-wait-for");
 const waitFor = chaiWaitFor.bindWaitFor({
   timeout: 1000,
   retryInterval: 50,
-})
+});
 
-module.exports = { waitFor }
+module.exports = { waitFor };

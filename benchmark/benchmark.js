@@ -1,6 +1,6 @@
-const path = require('path');
-const fs = require('fs');
-const { GrammarRegistry, ready } = require('../lib/second-mate.js');
+const path = require("path");
+const fs = require("fs");
+const { GrammarRegistry, ready } = require("../lib/second-mate.js");
 
 function tokenize(grammar, content, lineCount) {
   const start = Date.now();
@@ -11,14 +11,16 @@ function tokenize(grammar, content, lineCount) {
     tokenCount += tokenizedLine.length;
   }
   const tokensPerMillisecond = Math.round(tokenCount / duration);
-  console.log(`Generated ${tokenCount} tokens for ${lineCount} lines in ${duration}ms (${tokensPerMillisecond} tokens/ms)`);
+  console.log(
+    `Generated ${tokenCount} tokens for ${lineCount} lines in ${duration}ms (${tokensPerMillisecond} tokens/ms)`,
+  );
 }
 
 function tokenizeFile(filePath, grammar, message) {
   console.log();
   console.log(message);
-  const content = fs.readFileSync(filePath, 'utf8');
-  const lineCount = content.split('\n').length;
+  const content = fs.readFileSync(filePath, "utf8");
+  const lineCount = content.split("\n").length;
   tokenize(grammar, content, lineCount);
 }
 
@@ -26,15 +28,31 @@ async function main() {
   await ready;
 
   const registry = new GrammarRegistry();
-  const jsGrammar = registry.loadGrammarSync(path.resolve(__dirname, '..', 'spec', 'fixtures', 'javascript.json'));
+  const jsGrammar = registry.loadGrammarSync(
+    path.resolve(__dirname, "..", "spec", "fixtures", "javascript.json"),
+  );
   jsGrammar.maxTokensPerLine = Infinity;
-  const cssGrammar = registry.loadGrammarSync(path.resolve(__dirname, '..', 'spec', 'fixtures', 'css.cson'));
+  const cssGrammar = registry.loadGrammarSync(
+    path.resolve(__dirname, "..", "spec", "fixtures", "css.cson"),
+  );
   cssGrammar.maxTokensPerLine = Infinity;
 
-  tokenizeFile(path.join(__dirname, 'large.js'), jsGrammar, 'Tokenizing jQuery v2.0.3');
-  tokenizeFile(path.join(__dirname, 'large.min.js'), jsGrammar, 'Tokenizing jQuery v2.0.3 minified');
-  tokenizeFile(path.join(__dirname, 'bootstrap.css'), cssGrammar, 'Tokenizing Bootstrap CSS v3.1.1');
-  tokenizeFile(path.join(__dirname, 'bootstrap.min.css'), cssGrammar, 'Tokenizing Bootstrap CSS v3.1.1 minified');
+  tokenizeFile(path.join(__dirname, "large.js"), jsGrammar, "Tokenizing jQuery v2.0.3");
+  tokenizeFile(
+    path.join(__dirname, "large.min.js"),
+    jsGrammar,
+    "Tokenizing jQuery v2.0.3 minified",
+  );
+  tokenizeFile(
+    path.join(__dirname, "bootstrap.css"),
+    cssGrammar,
+    "Tokenizing Bootstrap CSS v3.1.1",
+  );
+  tokenizeFile(
+    path.join(__dirname, "bootstrap.min.css"),
+    cssGrammar,
+    "Tokenizing Bootstrap CSS v3.1.1 minified",
+  );
 }
 
 main();

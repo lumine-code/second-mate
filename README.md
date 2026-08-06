@@ -19,24 +19,24 @@ npm install @lumine-code/second-mate
 ### ScopeSelector
 
 ```javascript
-const {ScopeSelector, ready} = require('@lumine-code/second-mate')
+const { ScopeSelector, ready } = require("@lumine-code/second-mate");
 await ready;
-const selector = new ScopeSelector('a | b')
-selector.matches(['c']) // => false
-selector.matches(['a']) // => true
+const selector = new ScopeSelector("a | b");
+selector.matches(["c"]); // => false
+selector.matches(["a"]); // => true
 ```
 
 ### GrammarRegistry
 
 ```js
-const {GrammarRegistry, ready} = require('@lumine-code/second-mate');
+const { GrammarRegistry, ready } = require("@lumine-code/second-mate");
 await ready;
 const registry = new GrammarRegistry();
-const grammar = registry.loadGrammarSync('./spec/fixtures/javascript.json');
-const {line, tags} = grammar.tokenizeLine('var offset = 3;');
+const grammar = registry.loadGrammarSync("./spec/fixtures/javascript.json");
+const { line, tags } = grammar.tokenizeLine("var offset = 3;");
 // convert compact tags representation into convenient, space-inefficient tokens
 const tokens = registry.decodeTokens(line, tags);
-for (let {value, scopes} of Array.from(tokens)) {
+for (let { value, scopes } of Array.from(tokens)) {
   console.log(`Token text: '${value}' with scopes: ${scopes}`);
 }
 ```
@@ -48,7 +48,7 @@ Asynchronously load a grammar and add it to the registry.
 `grammarPath` - A string path to the grammar file.
 
 `callback` - A function to call after the grammar is read and added to the
-registry.  The callback receives `(error, grammar)` arguments.
+registry. The callback receives `(error, grammar)` arguments.
 
 #### loadGrammarSync(grammarPath)
 
@@ -104,15 +104,15 @@ is not an issue by passing the `line` string and `tags` array to `GrammarRegistr
 
 Otherwise, the integers can be interpreted as follows:
 
-* Positive integers represent tokens, with the number indicating the length of
-the token. All positive integers in the array should total to the length of the
-line passed to this method.
+- Positive integers represent tokens, with the number indicating the length of
+  the token. All positive integers in the array should total to the length of the
+  line passed to this method.
 
-* Negative integers represent scope start/stop tags. Odd integers are scope
-starts, and even integers are scope stops. An odd scope tag can be converted to
-a string via `GrammarRegistry::scopeForId`. If you want to convert an even scope
-tag, representing a scope end, add 1 to it to determine the corresponding scope
-start tag before calling `::scopeForId`.
+- Negative integers represent scope start/stop tags. Odd integers are scope
+  starts, and even integers are scope stops. An odd scope tag can be converted to
+  a string via `GrammarRegistry::scopeForId`. If you want to convert an even scope
+  tag, representing a scope end, add 1 to it to determine the corresponding scope
+  start tag before calling `::scopeForId`.
 
 #### tokenizeLines(text)
 
@@ -123,10 +123,10 @@ lines and a `tags` key, pointing to an array of tags arrays described above.
 
 ## Developing
 
-  * Clone the repository
-  * Run `npm install`
-  * Run `npm test` to run the specs
-  * If you make changes to `./src/scope-selector-parser.pegjs` ensure to run `npm run parse` to generate the JS form of PegJS.
+- Clone the repository
+- Run `npm install`
+- Run `npm test` to run the specs
+- If you make changes to `./src/scope-selector-parser.pegjs` ensure to run `npm run parse` to generate the JS form of PegJS.
 
 ## Contributing
 
