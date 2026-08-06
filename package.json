@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "event-kit": "^2.5.3",
-    "@lumine-code/fs-plus": "github:lumine-code/fs-plus#881a9b08449ee42b5b9e2d9fd249ff3244379bce",
+    "@lumine-code/fs-plus": "github:lumine-code/fs-plus#dbede762a7a1019a024d8f8c8de5e4f04ef2bd78",
     "grim": "^2.0.3",
-    "@lumine-code/season": "github:lumine-code/season#990d1cb33d17c8e072f246053bf57355f3e8c8a9",
-    "@lumine-code/underscore-plus": "github:lumine-code/underscore-plus#aaa5b918fec306f0f35c432b1aa301df5bfaa031",
+    "@lumine-code/season": "github:lumine-code/season#3516a8a6e96e7128fd65050909cba351a3ed6361",
+    "@lumine-code/underscore-plus": "github:lumine-code/underscore-plus#3187fd4c2dd47f50044efe51deb7c662ddac437c",
     "vscode-oniguruma": "^2.0.1"
   },
   "devDependencies": {
