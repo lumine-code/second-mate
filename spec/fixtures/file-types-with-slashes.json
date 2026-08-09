@@ -1,6 +1,6 @@
 {
   "fileTypes": [
-    ".atom/hello"
+    ".lumine/hello"
   ],
   "name": "fileTypes have a slash in them",
   "patterns": [
