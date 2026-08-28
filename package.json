@@ -31,7 +31,7 @@
     "node": ">=24"
   },
   "dependencies": {
-    "@lumine-code/event-kit": "github:lumine-code/event-kit#7c27feaa3c943f3f55485b18ed54e778765086d3",
+    "@lumine-code/event-kit": "github:lumine-code/event-kit#4caff97de0586796150bbf2733461ee7f9b1a1c7",
     "@lumine-code/fs-plus": "github:lumine-code/fs-plus#85044c6ec927cf5429fea84c82ff7f90eeab0026",
     "@lumine-code/season": "github:lumine-code/season#b9d78e669eff982a40e0e71a9b6ccbcc8c2d9519",
     "@lumine-code/underscore-plus": "github:lumine-code/underscore-plus#7abe38681700c81e6e69a53fbd2c9fd2835ff066",
