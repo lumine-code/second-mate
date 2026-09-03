@@ -2,6 +2,9 @@
 
 Provides TextMate grammar, tokenization, and scope-selection helpers.
 
+> [!NOTE]
+> This repository is archived. Lumine uses Tree-sitter exclusively and no longer depends on this TextMate runtime.
+
 ## Features
 
 - **Grammar registry**: loads, updates, and selects TextMate grammars and injections.
